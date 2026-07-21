@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wongyc.github.io/sitemap.xml
