@@ -41,6 +41,11 @@ body {
 header {
   border-bottom: 1px solid var(--rule);
   background: var(--bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .header-inner {
@@ -83,7 +88,7 @@ nav a.active {
 
 /* ---------- Main content (rendered markdown) ---------- */
 
-main { padding: 3rem 0 4rem; }
+main { padding: 5.5rem 0; }
 
 #content h1 {
   font-size: 1.9rem;
@@ -164,7 +169,7 @@ a:hover {
 
 #profile {
   position: sticky;
-  top: 2.5rem;
+  top: 5.5rem;
   align-self: start;
   font-size: 0.92rem;
   color: var(--muted);
@@ -307,11 +312,23 @@ footer {
   font-size: 0.74rem;
   color: var(--faint);
   letter-spacing: 0.03em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg);
 }
 
 /* ---------- Mobile ---------- */
 
 @media (max-width: 860px) {
+  /* the fixed header/footer/profile are desktop-only: on narrow screens the
+     page returns to normal flow (the nav docks to the bottom at 640px) */
+  header { position: static; }
+  footer { position: static; }
+  main { padding: 3rem 0 4rem; }
+
   .layout { grid-template-columns: 1fr; gap: 2.2rem; }
   #profile {
     position: static;
