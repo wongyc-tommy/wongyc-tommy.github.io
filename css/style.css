@@ -87,6 +87,9 @@ nav a.active {
   border-bottom-color: var(--accent);
 }
 
+/* duplicated into the bottom nav bar on narrow screens only; see max-width: 640px */
+.nav-footer { display: none; }
+
 /* ---------- Main content (rendered markdown) ---------- */
 
 main { padding: 3.5rem 0; }
@@ -410,9 +413,23 @@ footer {
     border-bottom-color: transparent;
   }
 
+  /* footer text moves into the bottom nav bar; the standalone footer is redundant */
+  footer { display: none; }
+
+  .nav-footer {
+    display: block;
+    margin-top: 0.35rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    color: var(--faint);
+  }
+
   /* keep the fixed bar from covering the end of the page */
-  main { padding-bottom: 2rem; }
-  footer { padding-bottom: calc(3.0rem + env(safe-area-inset-bottom)); }
+  main { padding-bottom: calc(4.9rem + env(safe-area-inset-bottom)); }
 
   /* compact profile: photo beside name + links */
   #profile {

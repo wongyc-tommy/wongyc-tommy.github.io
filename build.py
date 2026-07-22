@@ -46,7 +46,7 @@ FOOTER = "© 2026 Tommy YC Wong · Last updated July 2026"
 
 ROOT = Path(__file__).parent
 SOURCE = ROOT / "content.md"
-CSS_VERSION = "6"
+CSS_VERSION = "10"
 
 MD = markdown.Markdown(extensions=["nl2br", "sane_lists", "md_in_html"])
 
@@ -164,7 +164,8 @@ PAGE = """<!DOCTYPE html>
   <div class="container header-inner">
     <nav><ul>
 {nav}
-    </ul></nav>
+    </ul>
+    <p class="nav-footer">{footer}</p></nav>
   </div>
 </header>
 
