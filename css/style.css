@@ -7,6 +7,7 @@
   --accent-hover: #2f6b93;
   --rule: #e6e1d8;
   --card: #f6f4ef;
+  --pill: #eef2f6;          /* active nav-tab background */
   --serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
@@ -231,7 +232,7 @@ a:hover {
   --icon: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E");
 }
 
-#profile a[href^="mailto"] {
+#profile a[href^="mailto:"] {
   --icon: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-10 5L2 7'/%3E%3C/svg%3E");
 }
 
@@ -269,7 +270,7 @@ a:hover {
 
 #content img { max-width: 100%; }
 
-/* ---------- Cards: publications & talks (markdown blockquotes) ---------- */
+/* ---------- Cards: publications &amp; talks (markdown blockquotes) ---------- */
 
 #content blockquote {
   margin: 0 0 1.6rem;
@@ -373,24 +374,40 @@ footer {
     background: var(--bg);
     border-top: 1px solid var(--rule);
     box-shadow: 0 -1px 14px rgba(0, 0, 0, 0.05);
-    padding: 0.55rem 0.4rem;
-    padding-bottom: calc(0.55rem + env(safe-area-inset-bottom));
+    padding: 0.5rem 0.4rem;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
   }
 
+  /* tabs hug their own label and sit centered as a group, so long labels
+     ("Publications") no longer crowd while short ones ("CV") float in space */
   nav ul {
     flex-wrap: nowrap;
-    gap: 0;
-    justify-content: space-between;
+    gap: 0.25rem;
+    justify-content: center;
   }
 
-  nav li { flex: 1 1 0; min-width: 0; }
+  nav li { flex: 0 0 auto; min-width: 0; }
 
   nav a {
     display: block;
     text-align: center;
-    font-size: 0.69rem;
-    letter-spacing: 0.05em;
-    padding: 0 0.1rem 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    padding: 0.42rem 0.62rem;
+    border-radius: 9px;
+    border-bottom: none;
+  }
+
+  nav a:hover { color: var(--ink); }
+
+  /* active tab = soft filled pill (overrides the desktop underline) */
+  nav a.active {
+    color: var(--accent);
+    background: var(--pill);
+    font-weight: 600;
+    border-bottom-color: transparent;
   }
 
   /* keep the fixed bar from covering the end of the page */
